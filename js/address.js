@@ -6,6 +6,7 @@ new Vue({
         curIndex: 0,
         shippingMethod: 1,
         delFlag: false,
+        addFlag: false,
         curItem : ''
     },
     mounted: function(){
@@ -36,8 +37,19 @@ new Vue({
                 }
             })
         },
+        delConfirm: function(item){
+            this.delFlag = true;
+            this.curItem = item;
+            // console.log(item);
+        },
         delItem: function(){
             var index = this.addressList.indexOf(this.curItem);
+            this.addressList.splice(index,1);
+            this.delFlag = false;
+        },
+        saveItem: function(item){
+            console.log(item);
+            this.addFlag = false;
         }
     },
     
